@@ -1,8 +1,17 @@
+import numpy as np
 
-import math
+# BOOLEAN STUFF 
 
-a , b , c = 2 , 3 , 4
-s = ( a + b + c )/2
-print(s)
-print((s * (s - a) * (s - b ) * (s-c)) ** 1/2)
-print(math.sqrt((s * (s - a) * (s - b ) * (s-c))))
+# Imagine you have a list of numbers representing the "Categories" of items in a small dataset:
+# categories = [0, 1, 2, 0, 3, 2, 1, 0]
+
+# Question 1: The "Bouncer" Test
+# Goal: Create a list of True and False (a mask) that identifies only the zeros.
+
+categories = np.array([0, 1, 2, 0, 3, 2, 1, 0])
+mask = categories == 0
+print(mask)
+
+# Question 2: The "Either/Or" (The | Operator)
+# Goal: You want to find both category 0 and category 2.
+
