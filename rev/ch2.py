@@ -146,3 +146,30 @@ housing_total_bedromms_median = housing["total_bedrooms"].median()
 housing["total_bedrooms"] = housing["total_bedrooms"].fillna(housing_total_bedromms_median)
 # %%
 
+from sklearn.impute import SimpleImputer 
+
+imputer = SimpleImputer(strategy='median')
+housing_num = housing.select_dtypes(include=[np.number])
+imputer.fit(housing_num)
+# %%
+
+imputer.statistics_
+x = imputer.transform(housing_num)
+# %%
+
+x = pd.DataFrame(x , columns = housing_num.columns , index = housing_num.index)
+
+
+# %%
+housing_cat = housing[["ocean_proximity"]]
+housing_cat.head()
+# %%
+
+from sklearn.preprocessing import OneHotEncoder 
+
+cat_encoder = OneHotEncoder(sparse_output = False)
+housing_cat_1hot = cat_encoder.fit_transform(housing_cat)
+
+
+# %%
+
